@@ -1,10 +1,11 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { GalleryComponent } from './components/gallery/gallery.component';
 
-const routes: Routes = [];
+const routes: Routes = [{ path: '', component: GalleryComponent }];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
-export class GalleryRoutingModule { }
+export class GalleryRoutingModule {}
