@@ -1,0 +1,22 @@
+$black: #000;
+$white: #fff;
+
+$light-gray: #f5f5f5;
+$lighter-black: #111;
+
+@font-face {
+  font-family: "SawarabiMincho";
+  src: url("../../fonts/SawarabiMincho-Regular.ttf");
+}
+@font-face {
+  font-family: "JosefinSans - Regular";
+  src: url("../../fonts/JosefinSans-Regular.ttf");
+}
+@font-face {
+  font-family: "JosefinSans - Italic";
+  src: url("../../fonts/JosefinSans-Italic.ttf");
+}
+@font-face {
+  font-family: "JosefinSans - Bold";
+  src: url("../../fonts/JosefinSans-Bold.ttf");
+}

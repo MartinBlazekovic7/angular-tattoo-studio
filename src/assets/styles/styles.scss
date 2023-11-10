@@ -1,0 +1,10 @@
+// Import global styles
+@import "global/variables";
+@import "global/include-media";
+@import "global/shared";
+
+// Import styles for components
+@import "components/navigation-bar";
+@import "components/header";
+
+// Import styles for pages
