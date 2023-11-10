@@ -1,4 +1,7 @@
-<header>
-  <h1 class="title">STORYLINE TATTOO STUDIO</h1>
-  <p class="description">Tell your story.</p>
+<header
+  [style]="routeData?.image"
+  [ngClass]="{ isHome: routeData?.isHomePage }"
+>
+  <h1 *ngIf="routeData?.title" class="title">{{ routeData?.title }}</h1>
+  <p class="description">{{ routeData?.description }}</p>
 </header>
