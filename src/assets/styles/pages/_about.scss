@@ -17,7 +17,7 @@
     img {
       width: 100%;
       height: auto;
-      max-height: 720px;
+      max-height: 620px;
       object-fit: cover;
       box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
@@ -92,11 +92,9 @@
     }
     .reviewsForm {
       font-family: "JosefinSans - Regular", serif;
-      background-color: $light-gray;
-      padding: 8px;
       border-radius: 4px;
       width: 80%;
-      margin: 24px auto;
+      margin: 0 auto;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -105,9 +103,9 @@
         width: 100%;
       }
       .form-control {
+        background-color: $light-gray;
         width: 100%;
         margin: 24px 0;
-        background: transparent;
         border: none;
         outline: none;
         border-radius: 0px;
