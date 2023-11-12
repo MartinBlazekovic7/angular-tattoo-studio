@@ -19,6 +19,7 @@
       height: auto;
       max-height: 720px;
       object-fit: cover;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     }
   }
   &__ArtistName {
@@ -32,5 +33,55 @@
     font-weight: normal;
     font-family: "JosefinSans - Regular", serif;
     padding: 12px 0;
+  }
+  &__ReviewsContainer {
+    padding-bottom: 48px;
+    h3 {
+      text-align: right;
+    }
+  }
+  &__Review {
+    display: flex;
+    flex-direction: row;
+    height: 240px;
+    background-color: $light-gray;
+    margin-bottom: 12px;
+    width: 80%;
+    margin: 0 auto;
+    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
+      rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
+    .rating {
+      width: 30%;
+      font-size: 72px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      font-family: "Sawarabi Mincho", serif;
+      position: relative;
+      margin-left: 32px;
+      .firstNumber {
+        position: absolute;
+        top: 16px;
+        left: 16px;
+      }
+      .secondNumber {
+        position: absolute;
+        bottom: 16px;
+        right: 16px;
+      }
+      .more-left {
+        left: 48px;
+      }
+    }
+    .reviewText {
+      font-family: "JosefinSans - Regular", serif;
+      width: 70%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      padding: 10%;
+    }
   }
 }

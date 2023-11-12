@@ -19,5 +19,31 @@
         </div>
       </div>
     </div>
+    <hr class="separator" />
+    <div class="about__ReviewsContainer">
+      <h3 class="subtitle" style="padding: 0 0 12px">RATINGS AND REVIEWS</h3>
+      <div class="about__Review" *ngFor="let review of reviews">
+        <div class="rating">
+          <p>
+            <span
+              [ngClass]="
+                review.attributes?.rating! < 10
+                  ? 'firstNumber more-left'
+                  : 'firstNumber'
+              "
+              >{{ review.attributes?.rating }}</span
+            >/<span class="secondNumber">10</span>
+          </p>
+        </div>
+        <div class="reviewText">
+          <div>
+            <p>
+              {{ review.attributes?.reviewText }}
+            </p>
+            <p class="mt-5 text-right">- {{ review.attributes?.reviewer }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>

@@ -9,7 +9,7 @@ import { Response } from '../interfaces/response.interface';
 export class ApiService {
   constructor(private http: HttpClient) {}
 
-  getResources<T>(endpoint: string, queryArgs: string) {
+  getResources<T>(endpoint: string, queryArgs?: string) {
     return this.http.get<Response<T>>(
       `${environment.apiUrl}/${endpoint}?${queryArgs}`
     );
