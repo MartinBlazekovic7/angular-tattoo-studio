@@ -1,0 +1,36 @@
+.about {
+  &__ArtistsList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+  &__Artist:nth-child(even) {
+    text-align: right;
+  }
+  &__Artist {
+    width: 48%;
+    @media (max-width: 768px) {
+      width: 100%;
+    }
+  }
+  &__ArtistImage {
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 720px;
+      object-fit: cover;
+    }
+  }
+  &__ArtistName {
+    font-size: 1.5rem;
+    font-weight: bold;
+    font-family: "JosefinSans - Regular", serif;
+    padding-top: 12px;
+  }
+  &__ArtistDesc {
+    font-size: 1rem;
+    font-weight: normal;
+    font-family: "JosefinSans - Regular", serif;
+    padding: 12px 0;
+  }
+}

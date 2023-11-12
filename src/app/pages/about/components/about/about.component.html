@@ -1,1 +1,23 @@
-<p>about works!</p>
+<div class="about__Body contentBody">
+  <div class="about__Container contentWrapper">
+    <div class="about__ArtistsContainer">
+      <h3 class="subtitle">OUR AMAZING ARTISTS</h3>
+      <div class="about__ArtistsList">
+        <div class="about__Artist" *ngFor="let artist of artists">
+          <div class="about__ArtistImage">
+            <img
+              src="http://localhost:1337{{
+                artist.attributes?.image?.data?.attributes?.url
+              }}"
+              alt="artist1"
+            />
+          </div>
+          <div class="about__ArtistName">{{ artist.attributes?.name }}</div>
+          <div class="about__ArtistDesc">
+            {{ artist.attributes?.description }}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
