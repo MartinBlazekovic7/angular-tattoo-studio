@@ -35,7 +35,6 @@
     padding: 12px 0;
   }
   &__ReviewsContainer {
-    padding-bottom: 48px;
     h3 {
       text-align: right;
     }
@@ -46,7 +45,7 @@
     height: 240px;
     background-color: $light-gray;
     margin-bottom: 12px;
-    width: 80%;
+    width: 100%;
     margin: 0 auto;
     box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px,
       rgba(0, 0, 0, 0.08) 0px 0px 0px 1px;
@@ -83,5 +82,64 @@
       align-content: center;
       padding: 10%;
     }
+  }
+  &__ReviewsFormContainer {
+    font-family: "JosefinSans - Regular", serif;
+    padding-top: 48px;
+    font-size: 16px;
+    p {
+      text-align: center;
+    }
+    .reviewsForm {
+      font-family: "JosefinSans - Regular", serif;
+      background-color: $light-gray;
+      padding: 8px;
+      border-radius: 4px;
+      width: 80%;
+      margin: 24px auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      align-content: center;
+      form {
+        width: 100%;
+      }
+      .form-control {
+        width: 100%;
+        margin: 24px 0;
+        background: transparent;
+        border: none;
+        outline: none;
+        border-radius: 0px;
+        border: 1px solid $black;
+        border-radius: 4px;
+        height: 48px;
+        font-size: 16px;
+        transition: 0.1s;
+        &:focus {
+          box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25);
+          border: none;
+        }
+      }
+      .textAreaInput {
+        height: 80px;
+        border: 1px solid $black;
+        border-radius: 4px;
+      }
+      .buttonContainer {
+        width: 100%;
+        display: flex;
+        button {
+          width: 100px;
+          margin: 12px auto;
+        }
+      }
+    }
+  }
+  &__aboutUs {
+    font-family: "JosefinSans - Regular", serif;
+    width: 80%;
+    text-align: center;
+    margin: 0 auto;
   }
 }

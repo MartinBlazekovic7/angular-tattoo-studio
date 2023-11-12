@@ -22,28 +22,98 @@
     <hr class="separator" />
     <div class="about__ReviewsContainer">
       <h3 class="subtitle" style="padding: 0 0 12px">RATINGS AND REVIEWS</h3>
-      <div class="about__Review" *ngFor="let review of reviews">
-        <div class="rating">
-          <p>
-            <span
-              [ngClass]="
-                review.attributes?.rating! < 10
-                  ? 'firstNumber more-left'
-                  : 'firstNumber'
-              "
-              >{{ review.attributes?.rating }}</span
-            >/<span class="secondNumber">10</span>
-          </p>
-        </div>
-        <div class="reviewText">
-          <div>
+      <div
+        *ngIf="reviews && reviews.length > 0"
+        class="carousel"
+        #slider
+        appFlickity
+        [flickityConfig]="{
+          imagesLoaded: true,
+          pageDots: true,
+          groupCells: true,
+          wrapAround: true,
+          draggable: true,
+          prevNextButtons: true,
+        }"
+      >
+        <div class="about__Review" *ngFor="let review of reviews">
+          <div class="rating">
             <p>
-              {{ review.attributes?.reviewText }}
+              <span
+                [ngClass]="
+                  review.attributes?.rating! < 10
+                    ? 'firstNumber more-left'
+                    : 'firstNumber'
+                "
+                >{{ review.attributes?.rating }}</span
+              >/<span class="secondNumber">10</span>
             </p>
-            <p class="mt-5 text-right">- {{ review.attributes?.reviewer }}</p>
+          </div>
+          <div class="reviewText">
+            <div>
+              <p>
+                {{ review.attributes?.reviewText }}
+              </p>
+              <p class="mt-5 text-right">- {{ review.attributes?.reviewer }}</p>
+            </div>
           </div>
         </div>
       </div>
+      <div class="about__ReviewsFormContainer">
+        <div class="reviewsFormTitle">
+          <p>
+            If you have ever been our customer, feel free to leave us a review.
+          </p>
+        </div>
+        <div class="reviewsForm">
+          <form>
+            <div class="form-group">
+              <input
+                type="text"
+                class="form-control"
+                id="reviewer"
+                placeholder="Name"
+                name="reviewer"
+              />
+              <input
+                type="number"
+                class="form-control"
+                id="rating"
+                placeholder="Rating"
+                name="rating"
+              />
+            </div>
+            <div class="form-group">
+              <textarea
+                class="form-control textAreaInput"
+                id="reviewText"
+                rows="3"
+                placeholder="Review"
+                name="reviewText"
+              ></textarea>
+            </div>
+            <div class="buttonContainer">
+              <button type="submit" class="btn btn-dark">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+    <hr class="separator" />
+    <div class="about__aboutUs">
+      <p>
+        Founded in 2000, Storyline Tattoo Studio has been a hub for creativity,
+        self-expression, and craftsmanship. Our studio was born out of the idea
+        that tattoos are not just ink on skin; they are symbols of your
+        experiences, emotions, and life's journey.
+      </p>
+      <p class="separator">&#x2022;</p>
+      <p>
+        We are committed to the art of storytelling through tattoos. Every piece
+        we create is a collaboration between the client and the artist, where
+        your ideas and stories are transformed into a living canvas. We believe
+        in quality, creativity, and above all, your satisfaction.
+      </p>
     </div>
   </div>
 </div>
