@@ -1,0 +1,88 @@
+.gallery {
+  &__ItemsList {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  &__Item {
+    display: flex;
+    flex-direction: row;
+    margin: 24px 0;
+  }
+  &__ItemInfo {
+    width: 40%;
+    margin-left: 10%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+  }
+  &__ItemImage {
+    width: 50%;
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 400px;
+      object-fit: cover;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+      filter: grayscale(50%);
+    }
+  }
+  &__ItemName {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: "Sawarabi Mincho", sans-serif;
+    padding-bottom: 8px;
+  }
+  &__ItemDesc {
+    padding-bottom: 8px;
+  }
+  &__ItemInfo {
+    font-size: 1rem;
+    font-family: "JosefinSans - Regular", serif;
+  }
+  &__Tags {
+    font-style: italic;
+  }
+  &__PersonInfo {
+    font-style: italic;
+    padding-bottom: 8px;
+    p {
+      margin-bottom: 0;
+    }
+  }
+  &__ArtistInfo {
+    width: 100%;
+    position: absolute;
+    top: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-style: italic;
+  }
+  &__CustomerInfo {
+    width: 100%;
+    position: absolute;
+    bottom: 0;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    font-style: italic;
+  }
+}
+.reverse {
+  flex-direction: row-reverse;
+}
+.reverse-info {
+  align-items: flex-end;
+  text-align: right;
+  margin-left: 0;
+  margin-right: 10%;
+}
+.reverse-artist {
+  text-align: right;
+}

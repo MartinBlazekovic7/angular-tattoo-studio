@@ -7,7 +7,7 @@ export class Artist {
   attributes?: ArtistAttributes;
 }
 
-class ArtistAttributes {
+export class ArtistAttributes {
   name?: string;
   image?: ResponseDataParent<ResponseData<ImageAttributes>>;
   description?: string;

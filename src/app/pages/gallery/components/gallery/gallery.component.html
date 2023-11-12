@@ -1,1 +1,46 @@
-<p>gallery works!</p>
+<div class="gallery__Body contentBody">
+  <div class="gallery__Container contentWrapper">
+    <div class="gallery__ItemsContainer">
+      <h3 class="subtitle">GALLERY</h3>
+      <div class="gallery__ItemsList">
+        <ng-container *ngFor="let item of galleryItems; index as i">
+          <div
+            [ngClass]="i % 2 == 0 ? 'gallery__Item' : 'gallery__Item reverse'"
+          >
+            <div class="gallery__ItemImage">
+              <img
+                src="http://localhost:1337{{
+                  item.attributes?.tattooImage?.data?.attributes?.url
+                }}"
+                alt="item1"
+              />
+            </div>
+
+            <div
+              [ngClass]="
+                i % 2 == 0
+                  ? 'gallery__ItemInfo'
+                  : 'gallery__ItemInfo reverse-info'
+              "
+            >
+              <div class="gallery__PersonInfo">
+                <p>
+                  Artist: {{ item.attributes?.artist?.data?.attributes?.name }}
+                </p>
+                <p>Customer: {{ item.attributes?.customer }}</p>
+              </div>
+              <div class="gallery__ItemName">
+                {{ item.attributes?.tattooTitle }}
+              </div>
+              <div class="gallery__ItemDesc">
+                {{ item.attributes?.tattooDescription }}
+              </div>
+              <div class="gallery__Tags">Tags: Text, Forearm, Black, Grey</div>
+            </div>
+          </div>
+          <hr class="separator" />
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>

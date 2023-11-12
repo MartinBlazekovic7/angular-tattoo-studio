@@ -20,11 +20,9 @@ export class AboutComponent implements OnInit {
   ngOnInit(): void {
     this.api.getResources('artists', this.queryArgs).subscribe((data) => {
       this.artists = data.data as Artist[];
-      console.log(this.artists);
     });
     this.api.getResources('reviews').subscribe((data) => {
       this.reviews = data.data as Review[];
-      console.log(this.reviews);
     });
   }
 }
