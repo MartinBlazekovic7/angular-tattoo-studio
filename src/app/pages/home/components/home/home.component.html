@@ -1,1 +1,144 @@
-<p>home works!</p>
+<div class="home__Body contentBody">
+  <div class="home__Container contentWrapper">
+    <div class="home__TextLogoContainer">
+      <p class="text">
+        Our emblem signifies the art of storytelling through ink, celebrating
+        the timeless cycle of life, artistic transformation, and the elegant
+        unity of your personal narrative with the world around you.
+      </p>
+      <div class="imageContainer">
+        <img src="assets/images/logo/storyline-logo.png" alt="Storyline logo" />
+      </div>
+    </div>
+    <hr class="separator" />
+    <div class="home__PageInfoContainer">
+      <div class="home__PageInfoItem">
+        <div class="home__ItemInfo reverse-info">
+          <div class="home__ItemName">Dedicated to Excellence</div>
+          <div class="home__ItemDesc">
+            At Storyline Tattoo Studio, we adhere to the highest standards of
+            safety and hygiene. Your well-being is our top priority. We use
+            state-of-the-art equipment and follow strict sterilization
+            protocols, ensuring a safe and enjoyable tattooing experience.
+          </div>
+          <button class="btn btn-dark" routerLink="/gallery">OUR WORK</button>
+        </div>
+        <div class="home__ItemImage">
+          <img
+            src="assets/images/home-page/first-image.jpg"
+            alt="Storyline tattoo studio"
+          />
+        </div>
+      </div>
+    </div>
+    <hr class="separator" />
+    <div class="home__PageInfoContainer">
+      <div class="home__PageInfoItem">
+        <div class="home__ItemImage">
+          <img
+            src="assets/images/home-page/second-image.jpg"
+            alt="Storyline tattoo studio"
+          />
+        </div>
+        <div class="home__ItemInfo">
+          <div class="home__ItemName">Where Magic Happens</div>
+          <div class="home__ItemDesc">
+            Located in the heart of NYC, our studio is a haven for those seeking
+            a unique and memorable tattoo experience. Our space is designed to
+            provide a comfortable and welcoming atmosphere, where your
+            imagination can run wild.
+          </div>
+          <button class="btn btn-dark" routerLink="/about">
+            GET TO KNOW US
+          </button>
+        </div>
+      </div>
+    </div>
+    <hr class="separator" />
+
+    <div class="home__PageInfoContainer">
+      <p class="registerInfo">
+        Enhance your journey with us by registering for an account. Keep track
+        of your order history, enjoy personalized form filling, and create a
+        favorites list for easy decision-making. Join our exclusive community
+        for updates and promotions. Your tattoo adventure, simplified and
+        personalized.
+      </p>
+      <div class="home__PageInfoItem">
+        <div class="home__ItemInfo reverse-info home__FormContainer">
+          <ng-container *ngIf="!showingLogin">
+            <h3 class="subtitle">REGISTER</h3>
+            <form>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="First Name"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Last Name"
+                />
+              </div>
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="E-mail" />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Password"
+                />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Confirm Password"
+                />
+              </div>
+              <div class="buttonContainer">
+                <button type="submit" class="btn btn-dark">SUBMIT</button>
+                <p>
+                  Already have an account?
+                  <span (click)="showingLogin = true">Sign in</span>
+                </p>
+              </div>
+            </form>
+          </ng-container>
+          <ng-container *ngIf="showingLogin">
+            <h3 class="subtitle">LOGIN</h3>
+            <form>
+              <div class="form-group">
+                <input type="email" class="form-control" placeholder="E-mail" />
+              </div>
+              <div class="form-group">
+                <input
+                  type="password"
+                  class="form-control"
+                  placeholder="Password"
+                />
+              </div>
+              <div class="buttonContainer">
+                <button type="submit" class="btn btn-dark">SUBMIT</button>
+                <p>
+                  Don't have an account yet?
+                  <span (click)="showingLogin = false">Register</span>
+                </p>
+              </div>
+            </form>
+          </ng-container>
+        </div>
+        <div class="home__ItemImage">
+          <img
+            src="assets/images/home-page/form-image.jpg"
+            alt="Storyline tattoo studio"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

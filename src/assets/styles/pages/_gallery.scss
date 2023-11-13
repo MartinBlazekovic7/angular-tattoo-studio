@@ -1,4 +1,8 @@
 .gallery {
+  &__ItemsContainer {
+    width: 90%;
+    margin: 0 auto;
+  }
   &__Header {
     width: 100%;
     display: flex;
