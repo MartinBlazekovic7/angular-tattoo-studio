@@ -1,9 +1,38 @@
 <div class="gallery__Body contentBody">
   <div class="gallery__Container contentWrapper">
     <div class="gallery__ItemsContainer">
-      <h3 class="subtitle">GALLERY</h3>
+      <div class="gallery__Header">
+        <h3 class="subtitle">GALLERY</h3>
+        <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+          <button
+            type="button"
+            class="btn btn-outline-dark me-2"
+            id="dropdownManual"
+            ngbDropdownAnchor
+            (click)="myDrop.isOpen() ? myDrop.close() : myDrop.open()"
+          >
+            {{ artistFilterLabel }}
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownManual">
+            <button
+              *ngFor="let artist of artistsFiltered"
+              (click)="filterByArtist(artist)"
+              ngbDropdownItem
+            >
+              {{ artist.attributes?.name }}
+            </button>
+            <button
+              *ngIf="selectedArtist"
+              ngbDropdownItem
+              (click)="filterByArtist(null)"
+            >
+              All
+            </button>
+          </div>
+        </div>
+      </div>
       <div class="gallery__ItemsList">
-        <ng-container *ngFor="let item of galleryItems; index as i">
+        <ng-container *ngFor="let item of galleryItemsFiltered; index as i">
           <div
             [ngClass]="i % 2 == 0 ? 'gallery__Item' : 'gallery__Item reverse'"
           >
