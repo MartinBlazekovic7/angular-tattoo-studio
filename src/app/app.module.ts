@@ -7,10 +7,17 @@ import { NavigationBarComponent } from './components/navigation-bar/navigation-b
 import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { FooterComponent } from '@component/footer/footer.component';
 
 @NgModule({
   declarations: [AppComponent, NavigationBarComponent, HeaderComponent],
-  imports: [BrowserModule, AppRoutingModule, HttpClientModule, NgbModule],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    HttpClientModule,
+    NgbModule,
+    FooterComponent,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })
