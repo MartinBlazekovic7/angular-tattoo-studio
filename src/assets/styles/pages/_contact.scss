@@ -1,0 +1,103 @@
+.contact {
+  &__InformationContainer {
+    width: 90%;
+    margin: 0 auto;
+  }
+  &__PageInfoContainer {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+  &__PageInfoItem {
+    display: flex;
+    flex-direction: row;
+    margin: 24px auto;
+  }
+  &__ItemInfo {
+    width: 40%;
+    margin-right: 10%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    align-content: center;
+    button {
+      font-family: "SawarabiMincho", sans-serif;
+      padding: 12px;
+      width: 240px;
+      margin-top: 12px;
+    }
+  }
+  &__ItemImage {
+    width: 50%;
+    img {
+      width: 100%;
+      height: auto;
+      max-height: 620px;
+      object-fit: cover;
+      box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    }
+  }
+  &__ItemName {
+    font-size: 2rem;
+    font-weight: bold;
+    font-family: "Sawarabi Mincho", sans-serif;
+    padding-bottom: 8px;
+  }
+  &__ItemDesc {
+    font-family: "JosefinSans - Regular", serif;
+    padding-bottom: 8px;
+  }
+  &__FormContainer {
+    form {
+      font-family: "JosefinSans - Regular", serif;
+    }
+    button {
+      font-family: "Sawarabi Mincho", sans-serif;
+      width: 160px;
+      padding: 8px;
+      margin: 0 auto;
+      display: block;
+    }
+    .form-control-file::file-selector-button {
+      background-color: $light-gray;
+      outline: none;
+      border: 1px solid $black;
+      border-radius: 4px;
+      padding: 4px;
+      width: 120px;
+      cursor: pointer;
+    }
+    .form-group {
+      margin-bottom: 24px;
+    }
+    .form-control {
+      background-color: $light-gray;
+      width: 100%;
+      border: none;
+      outline: none;
+      border-radius: 0px;
+      border: 1px solid $black;
+      border-radius: 4px;
+      height: 48px;
+      font-size: 16px;
+      transition: 0.1s;
+      &:focus {
+        box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25);
+        border: none;
+      }
+    }
+    .textAreaInput {
+      height: 120px;
+      border: 1px solid $black;
+      border-radius: 4px;
+    }
+  }
+}
+.contactInfo {
+  font-family: "JosefinSans - Regular", serif;
+  width: 80%;
+  text-align: center;
+  margin: 24px auto;
+}

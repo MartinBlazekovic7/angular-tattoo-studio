@@ -1,1 +1,108 @@
-<p>contact works!</p>
+<div class="contact__Body contentBody">
+  <div class="contact__Container contentWrapper">
+    <div class="contact__FormContainer">
+      <p class="contactInfo">
+        Get in touch seamlessly with our team using our intuitive contact form.
+        Share your ideas, upload or choose a design, and send your preferences
+        directly to us. We're here to turn your vision into inked reality—reach
+        out and let the tattoo journey begin.
+      </p>
+      <div class="container w-50">
+        <form (ngSubmit)="submitForm()">
+          <div class="form-row row">
+            <div class="form-group col-md-6">
+              <label for="firstName">First Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="firstName"
+                placeholder="Enter your first name"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="lastName">Last Name</label>
+              <input
+                type="text"
+                class="form-control"
+                id="lastName"
+                placeholder="Enter your last name"
+              />
+            </div>
+          </div>
+          <div class="form-row row">
+            <div class="form-group col-md-6">
+              <label for="email">Email</label>
+              <input
+                type="email"
+                class="form-control"
+                id="email"
+                placeholder="Enter your email"
+              />
+            </div>
+            <div class="form-group col-md-6">
+              <label for="phoneNumber">Phone Number</label>
+              <input
+                type="tel"
+                class="form-control"
+                id="phoneNumber"
+                placeholder="Enter your phone number"
+              />
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="dropdown">Select an Option</label>
+            <select class="form-control" id="dropdown">
+              <option value="" disabled selected>Select...</option>
+              <option value="option1">Option 1</option>
+              <option value="option2">Option 2</option>
+              <option value="option3">Option 3</option>
+            </select>
+          </div>
+          <div class="form-group d-flex flex-column">
+            <label for="fileUpload">Upload File</label>
+            <input
+              type="file"
+              class="form-control-file"
+              id="fileUpload"
+              (change)="handleFileInput($event)"
+            />
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea
+              class="form-control textAreaInput"
+              id="message"
+              rows="4"
+              placeholder="Enter your message"
+            ></textarea>
+          </div>
+          <div class="w-100">
+            <button type="submit" class="btn btn-dark">SUBMIT</button>
+          </div>
+        </form>
+      </div>
+    </div>
+    <hr class="separator" />
+    <div class="contact__InformationContainer">
+      <div class="contact__PageInfoContainer">
+        <div class="contact__PageInfoItem">
+          <div class="contact__ItemInfo">
+            <div class="contact__ItemName">Our Information</div>
+            <div class="contact__ItemDesc">
+              At Storyline Tattoo Studio, we adhere to the highest standards of
+              safety and hygiene. Your well-being is our top priority. We use
+              state-of-the-art equipment and follow strict sterilization
+              protocols, ensuring a safe and enjoyable tattooing experience.
+            </div>
+          </div>
+          <div class="contact__ItemImage">
+            <img
+              src="assets/images/contact-page/contact-image.jpg"
+              alt="Storyline tattoo studio"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
