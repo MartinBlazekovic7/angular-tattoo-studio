@@ -12,7 +12,11 @@
       padding: 24px 0;
     }
     .dropdown-toggle {
-      width: 160px;
+      font-family: "Sawarabi Mincho", sans-serif;
+      width: 200px;
+    }
+    .dropdown-menu {
+      font-family: "Sawarabi Mincho", sans-serif;
     }
   }
   &__ItemsList {

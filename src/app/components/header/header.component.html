@@ -1,6 +1,7 @@
 <header
   [style]="routeData?.image"
   [ngClass]="{ isHome: routeData?.isHomePage }"
+  class="header-image"
 >
   <h1 *ngIf="routeData?.title" class="title">{{ routeData?.title }}</h1>
   <p class="description">{{ routeData?.description }}</p>
