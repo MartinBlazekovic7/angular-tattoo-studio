@@ -48,3 +48,18 @@
   margin-right: 8px;
   font-family: "JosefinSans - Regular", serif;
 }
+
+.dropdown-toggle {
+  font-family: "Sawarabi Mincho", sans-serif;
+  background-color: $light-gray !important;
+  border-radius: 4px !important;
+  height: 48px;
+  width: 120px;
+  box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  &:hover {
+    color: #a4a4a4 !important;
+  }
+}
+.dropdown-menu {
+  font-family: "Sawarabi Mincho", sans-serif;
+}
