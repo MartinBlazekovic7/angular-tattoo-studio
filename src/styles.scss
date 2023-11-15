@@ -1,5 +1,6 @@
+@use "node_modules/@ngneat/hot-toast/src/styles/styles.scss";
 /* You can add global styles to this file, and also import other style files */
 @import "assets/styles/styles.scss";
 
 /* Importing Bootstrap SCSS file. */
-@import 'bootstrap/scss/bootstrap';
+@import "bootstrap/scss/bootstrap";

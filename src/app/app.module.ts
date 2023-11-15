@@ -8,6 +8,10 @@ import { HeaderComponent } from './components/header/header.component';
 import { HttpClientModule } from '@angular/common/http';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { FooterComponent } from '@component/footer/footer.component';
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { HotToastModule } from '@ngneat/hot-toast';
 
 @NgModule({
   declarations: [AppComponent, NavigationBarComponent, HeaderComponent],
@@ -17,6 +21,10 @@ import { FooterComponent } from '@component/footer/footer.component';
     HttpClientModule,
     NgbModule,
     FooterComponent,
+    provideFirebaseApp(() => initializeApp({"projectId":"storyline-tattoo-studio","appId":"1:885706440836:web:7f379a662da4e32d8ac2d1","storageBucket":"storyline-tattoo-studio.appspot.com","apiKey":"AIzaSyBKmxgcgQWaxElqVWdA5GuBtebSubpDCTY","authDomain":"storyline-tattoo-studio.firebaseapp.com","messagingSenderId":"885706440836","measurementId":"G-E6JLP5NXZE"})),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    HotToastModule.forRoot(),
   ],
   providers: [],
   bootstrap: [AppComponent],

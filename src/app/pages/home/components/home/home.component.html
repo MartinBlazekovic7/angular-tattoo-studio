@@ -57,7 +57,7 @@
     <hr class="separator" />
 
     <div class="home__PageInfoContainer">
-      <p class="registerInfo">
+      <p *ngIf="!currentUser" class="registerInfo">
         Enhance your journey with us by registering for an account. Keep track
         of your order history, enjoy personalized form filling, and create a
         favorites list for easy decision-making. Join our exclusive community
@@ -66,71 +66,109 @@
       </p>
       <div class="home__PageInfoItem">
         <div class="home__ItemInfo reverse-info home__FormContainer">
-          <ng-container *ngIf="!showingLogin">
-            <h3 class="subtitle">REGISTER</h3>
-            <form>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="First Name"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="text"
-                  class="form-control"
-                  placeholder="Last Name"
-                />
-              </div>
-              <div class="form-group">
-                <input type="email" class="form-control" placeholder="E-mail" />
-              </div>
-              <div class="form-group">
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Password"
-                />
-              </div>
-              <div class="form-group">
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Confirm Password"
-                />
-              </div>
-              <div class="buttonContainer">
-                <button type="submit" class="btn btn-dark">SUBMIT</button>
-                <p>
-                  Already have an account?
-                  <span (click)="showingLogin = true">Sign in</span>
-                </p>
-              </div>
-            </form>
+          <ng-container *ngIf="!currentUser; else userDetails">
+            <ng-container *ngIf="!showingLogin">
+              <h3 class="subtitle">REGISTER</h3>
+              <form
+                [formGroup]="registerForm"
+                (ngSubmit)="onSubmitRegister()"
+                autocomplete="on"
+              >
+                <div class="form-group">
+                  <input
+                    type="text"
+                    class="form-control"
+                    placeholder="Full Name"
+                    formControlName="displayName"
+                    autocomplete="displayName"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="E-mail"
+                    formControlName="email"
+                    autocomplete="email"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Password"
+                    formControlName="email"
+                    autocomplete="email"
+                    formControlName="password"
+                    autocomplete="new-password"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Confirm Password"
+                    formControlName="confirmPassword"
+                    autocomplete="new-password"
+                  />
+                </div>
+                <div class="buttonContainer">
+                  <button type="submit" class="btn btn-dark">SUBMIT</button>
+                  <p>
+                    Already have an account?
+                    <span (click)="showingLogin = true">Sign in</span>
+                  </p>
+                </div>
+              </form>
+            </ng-container>
+            <ng-container *ngIf="showingLogin">
+              <h3 class="subtitle">LOGIN</h3>
+              <form
+                [formGroup]="loginForm"
+                (ngSubmit)="onSubmitLogin()"
+                autocomplete="on"
+              >
+                <div class="form-group">
+                  <input
+                    type="email"
+                    class="form-control"
+                    placeholder="E-mail"
+                    formControlName="email"
+                    autocomplete="email"
+                  />
+                </div>
+                <div class="form-group">
+                  <input
+                    type="password"
+                    class="form-control"
+                    placeholder="Password"
+                    formControlName="password"
+                    autocomplete="current-password"
+                  />
+                </div>
+                <div class="buttonContainer">
+                  <button type="submit" class="btn btn-dark">SUBMIT</button>
+                  <p>
+                    Don't have an account yet?
+                    <span (click)="showingLogin = false">Register</span>
+                  </p>
+                </div>
+              </form>
+            </ng-container>
           </ng-container>
-          <ng-container *ngIf="showingLogin">
-            <h3 class="subtitle">LOGIN</h3>
-            <form>
-              <div class="form-group">
-                <input type="email" class="form-control" placeholder="E-mail" />
-              </div>
-              <div class="form-group">
-                <input
-                  type="password"
-                  class="form-control"
-                  placeholder="Password"
-                />
-              </div>
-              <div class="buttonContainer">
-                <button type="submit" class="btn btn-dark">SUBMIT</button>
-                <p>
-                  Don't have an account yet?
-                  <span (click)="showingLogin = false">Register</span>
-                </p>
-              </div>
-            </form>
-          </ng-container>
+          <ng-template #userDetails>
+            <h3 class="subtitle">
+              Hello, {{ currentUserDetails?.displayName }}
+            </h3>
+            <p class="welcomeText">
+              Welcome back to Storyline Tattoo Studio. Your journey with us just
+              got even more personal. With your account, you can effortlessly
+              manage your tattoo adventures. Explore your order history, easily
+              fill out personalized forms, and curate a favorites list for swift
+              decision-making.
+            </p>
+            <a class="btn btn-dark" routerLink="/profile">Visit your profile</a>
+          </ng-template>
         </div>
         <div class="home__ItemImage">
           <img

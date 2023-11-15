@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { canActivate, redirectUnauthorizedTo } from '@angular/fire/auth-guard';
+
+const redirectUnauthorizedToLogin = () => redirectUnauthorizedTo(['forbidden']);
 
 const routes: Routes = [
   {
@@ -29,11 +32,13 @@ const routes: Routes = [
   },
   {
     path: 'profile',
+    ...canActivate(redirectUnauthorizedToLogin),
     loadChildren: () =>
       import('./pages/profile/profile.module').then((m) => m.ProfileModule),
   },
   {
     path: 'admin-dashboard',
+    ...canActivate(redirectUnauthorizedToLogin),
     loadChildren: () =>
       import('./pages/admin-dashboard/admin-dashboard.module').then(
         (m) => m.AdminDashboardModule
