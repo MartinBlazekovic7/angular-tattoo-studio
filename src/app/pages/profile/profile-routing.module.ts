@@ -7,7 +7,7 @@ const routes: Routes = [
     path: '',
     component: ProfileComponent,
     data: {
-      title: 'Your own story.',
+      title: 'Your story.',
       description: '',
       image:
         "background-image: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('assets/images/headers/profile-page-header.jpg')",

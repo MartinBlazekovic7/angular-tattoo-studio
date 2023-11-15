@@ -9,8 +9,7 @@ export class NavigationBarComponent {
   @HostListener('window:scroll', ['$event'])
   onWindowScroll() {
     let navbar = document.querySelector('.navigation-bar') as HTMLElement;
-    let header = document.querySelector('.header-image') as HTMLElement;
-    if (window.scrollY > header.clientHeight - 100) {
+    if (window.scrollY > navbar.clientHeight) {
       navbar.classList.add('navbar-inverse');
     } else {
       navbar.classList.remove('navbar-inverse');
