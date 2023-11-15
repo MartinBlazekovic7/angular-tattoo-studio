@@ -46,7 +46,6 @@ export class HomeComponent implements OnInit {
     this.authService.authInterface!.onAuthStateChanged((user) => {
       if (user) {
         this.currentUser = user;
-        console.log(this.currentUser);
         this.dataService
           .getData(Collections.USERS, user.uid)
           .subscribe((data) => {
