@@ -1,1 +1,76 @@
-<p>designs works!</p>
+<div class="designs__Body contentBody">
+  <div class="designs__Container contentWrapper">
+    <div class="designs__ItemsContainer">
+      <div class="designs__Header">
+        <div class="designs__HeaderSortDropdowns">
+          <p class="filterLabel">Sort by:</p>
+          <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+            <button
+              type="button"
+              class="btn btn-outline-dark me-2"
+              id="dropdownManual"
+              ngbDropdownAnchor
+              (click)="myDrop.isOpen() ? myDrop.close() : myDrop.open()"
+            >
+              Sort
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownManual">
+              <button ngbDropdownItem>Sort 1</button>
+              <button ngbDropdownItem>Sort 2</button>
+            </div>
+          </div>
+        </div>
+
+        <div class="designs__HeaderFilterDropdowns">
+          <p class="filterLabel">Filter by:</p>
+          <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+            <button
+              type="button"
+              class="btn btn-outline-dark me-2"
+              id="dropdownManual"
+              ngbDropdownAnchor
+              (click)="myDrop.isOpen() ? myDrop.close() : myDrop.open()"
+            >
+              Sort
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownManual">
+              <button ngbDropdownItem>Sort 1</button>
+              <button ngbDropdownItem>Sort 2</button>
+            </div>
+          </div>
+          <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+            <button
+              type="button"
+              class="btn btn-outline-dark me-2"
+              id="dropdownManual"
+              ngbDropdownAnchor
+              (click)="myDrop.isOpen() ? myDrop.close() : myDrop.open()"
+            >
+              Sort
+            </button>
+            <div ngbDropdownMenu aria-labelledby="dropdownManual">
+              <button ngbDropdownItem>Sort 1</button>
+              <button ngbDropdownItem>Sort 2</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="designs__DesignsContainer">
+      <div class="designs__ItemsList" *ngIf="designs">
+        <div class="designs__ItemBox" *ngFor="let design of designs">
+          <img
+            src="http://localhost:1337{{
+              design.attributes?.image?.data?.attributes?.url
+            }}"
+            alt=""
+          />
+          <div class="designs__ItemBoxInfo">
+            <p>{{ design.attributes?.name }}</p>
+            <i>More</i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
