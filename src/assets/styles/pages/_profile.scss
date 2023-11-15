@@ -1,0 +1,66 @@
+.profile {
+  &__Container {
+    .subtitle {
+      padding: 0;
+      padding-bottom: 24px;
+    }
+  }
+  &__ProfileContainer,
+  &__Orders,
+  &__Reviews {
+    width: 90%;
+    margin: 0 auto;
+  }
+  &__Header {
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+  }
+  &__ProfileInformation {
+    font-family: "JosefinSans - Regular", serif;
+    form div {
+      padding: 8px 0;
+      align-items: center;
+      p {
+        margin-bottom: 0;
+      }
+      P:nth-child(2) {
+        color: #a4a4a4;
+      }
+      .form-control {
+        background-color: $light-gray;
+        width: 100%;
+        border: none;
+        outline: none;
+        border-radius: 0px;
+        border: 1px solid $black;
+        border-radius: 4px;
+        height: 48px;
+        font-size: 16px;
+        transition: 0.1s;
+        &:focus {
+          box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25);
+          border: none;
+        }
+      }
+    }
+  }
+  &__Accordion {
+    font-family: "JosefinSans - Regular", serif;
+    .accordion-button {
+      &:focus {
+        box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.25);
+        border: none;
+      }
+      &:not(.collapsed) {
+        background-color: $light-gray;
+        color: $black;
+      }
+    }
+  }
+}
+.reverse-header {
+  justify-content: flex-end;
+}

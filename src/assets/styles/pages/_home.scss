@@ -119,3 +119,8 @@
   text-align: center;
   margin: 0 auto;
 }
+.logoutLink {
+  &:hover {
+    text-decoration: underline;
+  }
+}

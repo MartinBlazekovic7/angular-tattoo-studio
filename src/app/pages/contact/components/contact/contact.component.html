@@ -8,7 +8,11 @@
         out and let the tattoo journey begin.
       </p>
       <div class="container w-50">
-        <form (ngSubmit)="submitForm()">
+        <form
+          [formGroup]="contactForm"
+          (ngSubmit)="submitForm()"
+          autocomplete="on"
+        >
           <div class="form-row row">
             <div class="form-group col-md-6">
               <label for="firstName">First Name</label>
@@ -17,6 +21,8 @@
                 class="form-control"
                 id="firstName"
                 placeholder="Enter your first name"
+                formControlName="firstName"
+                autocomplete="on"
               />
             </div>
             <div class="form-group col-md-6">
@@ -26,6 +32,8 @@
                 class="form-control"
                 id="lastName"
                 placeholder="Enter your last name"
+                formControlName="lastName"
+                autocomplete="on"
               />
             </div>
           </div>
@@ -37,6 +45,8 @@
                 class="form-control"
                 id="email"
                 placeholder="Enter your email"
+                formControlName="email"
+                autocomplete="on"
               />
             </div>
             <div class="form-group col-md-6">
@@ -46,6 +56,8 @@
                 class="form-control"
                 id="phoneNumber"
                 placeholder="Enter your phone number"
+                formControlName="phoneNumber"
+                autocomplete="on"
               />
             </div>
           </div>

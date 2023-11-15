@@ -105,6 +105,12 @@ export class HomeComponent implements OnInit {
       });
   }
 
+  logout() {
+    this.authService.logout().subscribe(() => {
+      window.location.reload();
+    });
+  }
+
   get emailLogin() {
     return this.loginForm.get('email');
   }
