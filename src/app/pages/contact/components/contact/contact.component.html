@@ -120,17 +120,56 @@
             </div>
           </div>
           <div class="form-group">
-            <label for="dropdown">Select an Option</label>
-            <select class="form-control" id="dropdown">
-              <option value="" disabled selected>Select...</option>
-              <option value="option1">Option 1</option>
-              <option value="option2">Option 2</option>
-              <option value="option3">Option 3</option>
-            </select>
+            <label for="dropdown">Select a design</label>
+            <div
+              class="d-flex flex-column"
+              ngbDropdown
+              #designDrop="ngbDropdown"
+            >
+              <button
+                type="button"
+                class="btn btn-outline-dark me-2 w-100"
+                id="dropdownManual"
+                ngbDropdownAnchor
+                (click)="
+                  designDrop.isOpen() ? designDrop.close() : designDrop.open()
+                "
+              >
+                Designs
+              </button>
+              <div
+                ngbDropdownMenu
+                aria-labelledby="dropdownManual"
+                id="dropdown"
+                class="w-100"
+              >
+                <button
+                  ngbDropdownItem
+                  *ngFor="let design of designs"
+                  (click)="selectDesign(design)"
+                  class="w-100"
+                >
+                  {{ design.attributes?.name }} - Starting at:
+                  {{ design.attributes?.price }}$
+                </button>
+              </div>
+            </div>
+            <div
+              class="d-flex flex-column"
+              *ngIf="selectedDesigns.length"
+            ></div>
+            <div
+              class="w-100 d-flex flex-row align-items-center justify-content-between selectedDesigns"
+              *ngFor="let design of selectedDesigns"
+            >
+              <p>{{ design.attributes?.name }}</p>
+              <a (click)="removeDesign(design)"> X </a>
+            </div>
           </div>
           <div class="form-group d-flex flex-column">
             <label for="fileUpload">Upload File</label>
             <input
+              #inputField
               type="file"
               class="form-control-file"
               id="fileUpload"
@@ -188,5 +227,15 @@
         </div>
       </div>
     </div>
+  </div>
+</div>
+<div class="modal-overlay" *ngIf="showingOrderModal">
+  <div class="modalContent">
+    <span class="close" (click)="closeModal()">&times;</span>
+    <h2>Thank you!</h2>
+    <p>
+      Your message has been received. We will contact you through email or phone
+      as soon as possible.
+    </p>
   </div>
 </div>

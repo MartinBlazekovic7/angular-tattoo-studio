@@ -14,6 +14,7 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 import { HotToastModule } from '@ngneat/hot-toast';
 import { FIREBASE_OPTIONS } from '@angular/fire/compat';
 import { environment } from 'src/environments/environment';
+import { getStorage, provideStorage } from '@angular/fire/storage';
 
 @NgModule({
   declarations: [AppComponent, NavigationBarComponent, HeaderComponent],
@@ -36,6 +37,7 @@ import { environment } from 'src/environments/environment';
     ),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage()),
     HotToastModule.forRoot(),
   ],
   providers: [

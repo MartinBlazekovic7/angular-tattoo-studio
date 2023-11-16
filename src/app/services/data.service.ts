@@ -5,6 +5,7 @@ import { UserDetails } from '@model/user-details.model';
 import { doc, setDoc } from 'firebase/firestore';
 import { Observable, from } from 'rxjs';
 import { AngularFirestore } from '@angular/fire/compat/firestore';
+import { ContactFormData } from '@model/contact.model';
 
 @Injectable({
   providedIn: 'root',
@@ -29,5 +30,10 @@ export class DataService {
   updateUser(user: UserDetails): Observable<void> {
     const ref = doc(this.firestore, Collections.USERS, user.uid ?? '');
     return from(updateDoc(ref, { ...user }));
+  }
+
+  updateOrder(order: ContactFormData): Observable<void> {
+    const ref = doc(this.firestore, Collections.ORDERS, order.uid ?? '');
+    return from(updateDoc(ref, { ...order }));
   }
 }
