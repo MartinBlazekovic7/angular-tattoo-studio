@@ -27,6 +27,9 @@ nav a {
   text-decoration: none;
   color: $light-gray;
   transition: color 0.3s;
+  @include media("<=mobile") {
+    font-size: 10px;
+  }
 }
 
 nav a:hover {
@@ -35,6 +38,14 @@ nav a:hover {
 
 .logo {
   margin: 0 20px;
+  img {
+    width: 64px;
+    height: 64px;
+    @include media("<=tablet") {
+      width: 48px;
+      height: 48px;
+    }
+  }
 }
 
 .sticky {
@@ -51,4 +62,7 @@ nav a:hover {
     color: $black;
   }
   box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+  .menu-icon svg {
+    fill: #000;
+  }
 }

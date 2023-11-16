@@ -14,9 +14,24 @@ header {
   h1 {
     font-size: 64px;
     font-weight: 400;
+    transition: 200ms ease-in-out;
+    @include media("<=tablet") {
+      font-size: 48px;
+    }
+    @include media("<=mobile") {
+      width: 90%;
+      font-size: 32px;
+    }
   }
   p {
     font-size: 32px;
+    transition: 200ms ease-in-out;
+    @include media("<=tablet") {
+      font-size: 24px;
+    }
+    @include media("<=mobile") {
+      font-size: 16px;
+    }
   }
 }
 
