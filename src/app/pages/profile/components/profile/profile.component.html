@@ -10,7 +10,7 @@
             *ngIf="editingProfile"
             (click)="cancelProfileEdit()"
           >
-            Otkaži
+            Cancel
           </button>
           <button
             type="submit"
@@ -18,7 +18,7 @@
             *ngIf="editingProfile"
             (click)="submitProfileForm.click()"
           >
-            Spremi promjene
+            Save changes
           </button>
           <button
             type="submit"
@@ -26,7 +26,7 @@
             *ngIf="!editingProfile"
             (click)="startProfileEdit()"
           >
-            Uredi profil
+            Edit profile
           </button>
         </div>
       </div>
