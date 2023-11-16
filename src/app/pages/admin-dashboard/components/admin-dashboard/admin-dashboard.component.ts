@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Collections } from '@enum/collections.enum';
 import { Review, ReviewData } from '@model/review.model';
 import { ApiService } from '@service/api.service';
 import { DataService } from '@service/data.service';
@@ -16,7 +17,7 @@ export class AdminDashboardComponent implements OnInit {
   constructor(private api: ApiService, private dataService: DataService) {}
 
   ngOnInit(): void {
-    this.dataService.getAllData('reviews').subscribe((data: any) => {
+    this.dataService.getAllData(Collections.REVIEWS).subscribe((data: any) => {
       this.reviews = data as ReviewData[];
     });
   }
