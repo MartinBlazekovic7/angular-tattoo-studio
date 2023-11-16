@@ -23,37 +23,143 @@
           </div>
         </div>
       </div>
-      <ng-container *ngIf="showingReviews; else showingOrders">
+      <ng-container *ngIf="showingReviews">
         <div class="admin__Reviews">
           <table class="table table-striped">
             <thead>
               <tr>
                 <th scope="col">#</th>
                 <th scope="col">Person</th>
-                <th scope="col" style="text-align: center">Rating</th>
                 <th scope="col">User ID</th>
-                <th scope="col" style="text-align: center">Review</th>
-                <th scope="col" style="text-align: center">Action</th>
+                <th scope="col">Review</th>
+                <th scope="col" style="text-align: center">Rating</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let review of reviews; index as i">
                 <th scope="row">{{ i + 1 }}</th>
                 <td>{{ review.reviewer }}</td>
-                <td style="text-align: center">
-                  {{ review.rating }}
-                </td>
                 <td>{{ review.userId }}</td>
                 <td>{{ review.reviewText }}</td>
-                <td class="d-flex justify-content-center">
-                  <button class="btn btn-dark">Add</button>
+                <td style="text-align: center">
+                  {{ review.rating }}
                 </td>
               </tr>
             </tbody>
           </table>
         </div>
       </ng-container>
-      <ng-template #showingOrders></ng-template>
+      <ng-container *ngIf="!showingReviews">
+        <div ngbAccordion [closeOthers]="true" style="padding-bottom: 24px">
+          <div
+            class="admin__Accordion"
+            ngbAccordionItem
+            *ngFor="let order of orders"
+          >
+            <h2 ngbAccordionHeader>
+              <button ngbAccordionButton>{{ order.message }}</button>
+            </h2>
+            <div ngbAccordionCollapse>
+              <div ngbAccordionBody>
+                <ng-template>
+                  <div class="container">
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p style="font-weight: bold">First name:</p>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{{ order.firstName }}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p style="font-weight: bold">Last name:</p>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{{ order.lastName }}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p style="font-weight: bold">Email:</p>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{{ order.email }}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p style="font-weight: bold">Phone number:</p>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{{ order.phoneNumber }}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p style="font-weight: bold">Date:</p>
+                      </div>
+                      <div *ngIf="order.createdAt" class="col-md-6">
+                        <p>
+                          {{ order.createdAt }}
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p style="font-weight: bold">Selected design(s):</p>
+                      </div>
+                      <div class="col-md-6">
+                        <p>
+                          <span *ngFor="let design of order.selectedDesigns">{{
+                            design.attributes?.name
+                          }}</span>
+                        </p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p style="font-weight: bold">See design:</p>
+                      </div>
+                      <div class="col-md-6" style="margin-bottom: 1rem">
+                        <a
+                          *ngIf="order.filePath"
+                          href="{{ order.filePath }}"
+                          target="_blank"
+                          >Link</a
+                        >
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p style="font-weight: bold">Message:</p>
+                      </div>
+                      <div class="col-md-6">
+                        <p>{{ order.message }}</p>
+                      </div>
+                    </div>
+                    <div class="row">
+                      <div class="col-md-6">
+                        <p style="font-weight: bold">Completed:</p>
+                      </div>
+                      <div class="col-md-6">
+                        <a
+                          *ngIf="!order.completed"
+                          class="markComplete"
+                          (click)="markCompleted(order)"
+                        >
+                          Mark complete
+                        </a>
+                        <p *ngIf="order.completed">Yes</p>
+                      </div>
+                    </div>
+                  </div>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+        </div>
+      </ng-container>
     </div>
   </div>
 </div>

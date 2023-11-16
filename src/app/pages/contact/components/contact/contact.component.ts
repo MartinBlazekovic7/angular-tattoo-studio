@@ -86,6 +86,8 @@ export class ContactComponent implements OnInit {
     const contactFormData: ContactFormData = this.contactForm.value;
     contactFormData.selectedDesigns = this.selectedDesigns;
     contactFormData.uid = FirebaseHelper.generateReviewId();
+    contactFormData.createdAt = new Date().toLocaleDateString('en-US');
+    contactFormData.completed = false;
     if (this.currentUser) {
       contactFormData.userId = this.currentUser.uid;
     }

@@ -156,6 +156,16 @@
                       </div>
                       <div class="row">
                         <div class="col-md-6">
+                          <p style="font-weight: bold">Date:</p>
+                        </div>
+                        <div *ngIf="order.createdAt" class="col-md-6">
+                          <p>
+                            {{ order.createdAt }}
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
                           <p style="font-weight: bold">Selected design(s):</p>
                         </div>
                         <div class="col-md-6">

@@ -80,3 +80,11 @@
     text-align: left;
   }
 }
+.markComplete {
+  color: $black;
+  margin-bottom: 16px;
+  cursor: pointer;
+  &:hover {
+    text-decoration: underline;
+  }
+}

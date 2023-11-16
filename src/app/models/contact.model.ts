@@ -10,4 +10,6 @@ export class ContactFormData {
   selectedDesigns?: Design[] = [];
   filePath?: string;
   userId?: string;
+  createdAt?: string;
+  completed?: boolean;
 }
