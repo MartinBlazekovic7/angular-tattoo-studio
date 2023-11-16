@@ -16,7 +16,7 @@ class DesignAttributes {
   price?: number;
   popularity?: number;
   image?: ResponseDataParent<ResponseData<ImageAttributes>>;
-  artists?: ResponseDataParent<ResponseData<ArtistAttributes>>;
+  artists?: ResponseDataParent<ResponseData<ArtistAttributes>[]>;
   type?: ResponseDataParent<ResponseData<TypeAttributes>>;
-  tags?: ResponseDataParent<ResponseData<TagAttributes>>;
+  tags?: ResponseDataParent<ResponseData<TagAttributes>[]>;
 }

@@ -37,6 +37,9 @@ export class DesignsComponent implements OnInit {
 
   sortLabel?: string = 'Popularity (DESC)';
 
+  selectedDesign?: Design;
+  showSelectedDesign?: boolean = false;
+
   constructor(private api: ApiService) {}
 
   ngOnInit(): void {
@@ -112,5 +115,9 @@ export class DesignsComponent implements OnInit {
       default:
         console.error('Invalid sortType:', sortType);
     }
+  }
+
+  closeModal(): void {
+    this.showSelectedDesign = false;
   }
 }

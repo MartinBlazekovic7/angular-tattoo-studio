@@ -76,3 +76,28 @@
     font-family: "SawarabiMincho", sans-serif;
   }
 }
+.designContent {
+  .image {
+    width: 60%;
+    img {
+      width: 100%;
+      height: auto;
+      object-fit: cover;
+      overflow: hidden;
+    }
+  }
+  .info {
+    .row {
+      .bold {
+        font-weight: bold;
+      }
+    }
+    width: 40%;
+  }
+}
+.bigger {
+  font-family: "JosefinSans - Regular", serif;
+  background-color: $white !important;
+  width: 600px !important;
+  height: 400px !important;
+}
