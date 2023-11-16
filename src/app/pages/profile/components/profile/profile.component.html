@@ -38,7 +38,7 @@
               {{
                 currentUserDetails?.displayName?.length
                   ? currentUserDetails?.displayName
-                  : "Unknownnown"
+                  : "Unknown"
               }}
             </p>
             <input
@@ -112,34 +112,96 @@
         <h3 class="subtitle">PAST ORDERS</h3>
       </div>
       <div class="profile__Accordion">
-        <div ngbAccordion [closeOthers]="true">
-          <div
-            ngbAccordionItem
-            *ngFor="let panel of panels"
-            [collapsed]="panel !== 'First'"
-          >
-            <h2 ngbAccordionHeader>
-              <button ngbAccordionButton>{{ panel }}</button>
-            </h2>
-            <div ngbAccordionCollapse>
-              <div ngbAccordionBody>
-                <ng-template>
-                  Anim pariatur cliche reprehenderit, enim eiusmod high life
-                  accusamus terry richardson ad squid. 3 wolf moon officia aute,
-                  non cupidatat skateboard dolor brunch. Food truck quinoa
-                  nesciunt laborum eiusmod. Brunch 3 wolf moon tempor, sunt
-                  aliqua put a bird on it squid single-origin coffee nulla
-                  assumenda shoreditch et. Nihil anim keffiyeh helvetica, craft
-                  beer labore wes anderson cred nesciunt sapiente ea proident.
-                  Ad vegan excepteur butcher vice lomo. Leggings occaecat craft
-                  beer farm-to-table, raw denim aesthetic synth nesciunt you
-                  probably haven't heard of them accusamus labore sustainable
-                  VHS.
-                </ng-template>
+        <ng-container *ngIf="orders.length; else noOrders">
+          <div ngbAccordion [closeOthers]="true">
+            <div ngbAccordionItem *ngFor="let order of orders">
+              <h2 ngbAccordionHeader>
+                <button ngbAccordionButton>{{ order.message }}</button>
+              </h2>
+              <div ngbAccordionCollapse>
+                <div ngbAccordionBody>
+                  <ng-template>
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p style="font-weight: bold">First name:</p>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{{ order.firstName }}</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p style="font-weight: bold">Last name:</p>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{{ order.lastName }}</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p style="font-weight: bold">Email:</p>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{{ order.email }}</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p style="font-weight: bold">Phone number:</p>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{{ order.phoneNumber }}</p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p style="font-weight: bold">Selected design(s):</p>
+                        </div>
+                        <div class="col-md-6">
+                          <p>
+                            <span
+                              *ngFor="let design of order.selectedDesigns"
+                              >{{ design.attributes?.name }}</span
+                            >
+                          </p>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p style="font-weight: bold">See design:</p>
+                        </div>
+                        <div class="col-md-6" style="margin-bottom: 1rem">
+                          <a
+                            *ngIf="order.filePath"
+                            href="{{ order.filePath }}"
+                            target="_blank"
+                            >Link</a
+                          >
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="col-md-6">
+                          <p style="font-weight: bold">Message:</p>
+                        </div>
+                        <div class="col-md-6">
+                          <p>{{ order.message }}</p>
+                        </div>
+                      </div>
+                    </div>
+                  </ng-template>
+                </div>
               </div>
             </div>
           </div>
-        </div>
+        </ng-container>
+        <ng-template #noOrders>
+          <div class="w-100">
+            <i style="display: block; text-align: center"
+              >You didn't make any orders yet.</i
+            >
+          </div>
+        </ng-template>
       </div>
     </div>
     <hr class="separator" />

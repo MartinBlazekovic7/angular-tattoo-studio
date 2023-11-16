@@ -3,6 +3,7 @@ import { User } from '@angular/fire/auth';
 import { NonNullableFormBuilder } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Collections } from '@enum/collections.enum';
+import { ContactFormData } from '@model/contact.model';
 import { ReviewData } from '@model/review.model';
 import { UserDetails } from '@model/user-details.model';
 import { HotToastService } from '@ngneat/hot-toast';
@@ -22,6 +23,7 @@ export class ProfileComponent {
   currentUserDetails?: UserDetails;
 
   reviews: ReviewData[] = [];
+  orders: ContactFormData[] = [];
 
   constructor(
     private authService: AuthService,
@@ -55,6 +57,12 @@ export class ProfileComponent {
         this.dataService.getAllData(Collections.REVIEWS).subscribe((data) => {
           this.reviews = data as ReviewData[];
           this.reviews = this.reviews.filter(
+            (review) => review.userId === this.currentUserDetails?.uid
+          );
+        });
+        this.dataService.getAllData(Collections.ORDERS).subscribe((data) => {
+          this.orders = data as ContactFormData[];
+          this.orders = this.orders.filter(
             (review) => review.userId === this.currentUserDetails?.uid
           );
         });
