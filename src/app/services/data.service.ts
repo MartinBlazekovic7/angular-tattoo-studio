@@ -4,12 +4,13 @@ import { Collections } from '@enum/collections.enum';
 import { UserDetails } from '@model/user-details.model';
 import { doc, setDoc } from 'firebase/firestore';
 import { Observable, from } from 'rxjs';
+import { AngularFirestore } from '@angular/fire/compat/firestore';
 
 @Injectable({
   providedIn: 'root',
 })
 export class DataService {
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, private afs: AngularFirestore) {}
 
   addData(collection: string, data: any): Observable<void> {
     const ref = doc(this.firestore, collection, data.uid);
@@ -19,6 +20,10 @@ export class DataService {
   getData(collection: string, uid: string) {
     const ref = doc(this.firestore, collection, uid);
     return docData(ref);
+  }
+
+  getAllData(collection: string) {
+    return this.afs.collection(collection).valueChanges();
   }
 
   updateUser(user: UserDetails): Observable<void> {

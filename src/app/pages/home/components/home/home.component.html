@@ -157,26 +157,43 @@
             </ng-container>
           </ng-container>
           <ng-template #userDetails>
-            <h3 class="subtitle">
-              Hello, {{ currentUserDetails?.displayName }}
-            </h3>
-            <p class="welcomeText">
-              Welcome back to Storyline Tattoo Studio. Your journey with us just
-              got even more personal. With your account, you can effortlessly
-              manage your tattoo adventures. Explore your order history, easily
-              fill out personalized forms, and curate a favorites list for swift
-              decision-making.
-            </p>
-            <div
-              class="d-flex flex-row w-100 align-items-center justify-content-center"
+            <ng-container *ngIf="currentUserDetails?.isAdmin; else notAdmin">
+              <h3 class="subtitle">
+                Hello, {{ currentUserDetails?.displayName }}
+              </h3>
+              <div
+                class="d-flex flex-row w-100 align-items-center justify-content-center"
+              >
+                <button class="btn btn-dark" routerLink="/admin-dashboard">
+                  Visit admin dashboard
+                </button>
+                <button class="btn btn-white logoutLink" (click)="logout()">
+                  Log out
+                </button>
+              </div></ng-container
             >
-              <button class="btn btn-dark" routerLink="/profile">
-                Visit your profile
-              </button>
-              <button class="btn btn-white logoutLink" (click)="logout()">
-                Log out
-              </button>
-            </div>
+            <ng-template #notAdmin>
+              <h3 class="subtitle">
+                Hello, {{ currentUserDetails?.displayName }}
+              </h3>
+              <p class="welcomeText">
+                Welcome back to Storyline Tattoo Studio. Your journey with us
+                just got even more personal. With your account, you can
+                effortlessly manage your tattoo adventures. Explore your order
+                history, easily fill out personalized forms, and curate a
+                favorites list for swift decision-making.
+              </p>
+              <div
+                class="d-flex flex-row w-100 align-items-center justify-content-center"
+              >
+                <button class="btn btn-dark" routerLink="/profile">
+                  Visit your profile
+                </button>
+                <button class="btn btn-white logoutLink" (click)="logout()">
+                  Log out
+                </button>
+              </div>
+            </ng-template>
           </ng-template>
         </div>
         <div class="home__ItemImage">

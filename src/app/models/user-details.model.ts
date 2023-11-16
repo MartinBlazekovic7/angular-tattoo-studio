@@ -5,4 +5,5 @@ export class UserDetails {
   lastName?: string;
   email?: string;
   phoneNumber?: string;
+  isAdmin?: boolean;
 }

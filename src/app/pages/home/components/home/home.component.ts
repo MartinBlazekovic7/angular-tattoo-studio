@@ -72,7 +72,10 @@ export class HomeComponent implements OnInit {
         })
       )
       .subscribe(() => {
-        this.router.navigate(['/profile']);
+        if (!this.currentUserDetails?.isAdmin) {
+          this.router.navigate(['/profile']);
+        }
+        this.router.navigate(['/admin-dashboard']);
       });
   }
 
@@ -91,6 +94,7 @@ export class HomeComponent implements OnInit {
             uid,
             email,
             displayName: displayName,
+            isAdmin: false,
           })
         ),
         this.toast.observe({
@@ -100,7 +104,10 @@ export class HomeComponent implements OnInit {
         })
       )
       .subscribe(() => {
-        this.router.navigate(['/profile']);
+        if (!this.currentUserDetails?.isAdmin) {
+          this.router.navigate(['/profile']);
+        }
+        this.router.navigate(['/admin-dashboard']);
       });
   }
 

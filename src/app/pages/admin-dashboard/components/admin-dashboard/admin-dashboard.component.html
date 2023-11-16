@@ -1,1 +1,59 @@
-<p>admin-dashboard works!</p>
+<div class="admin__Body contentBody">
+  <div class="admin__Container contentWrapper">
+    <div class="admin__ItemsContainer">
+      <div class="admin__Header">
+        <h3 class="subtitle">DATA</h3>
+        <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+          <button
+            type="button"
+            class="btn btn-outline-dark me-2"
+            id="dropdownManual"
+            ngbDropdownAnchor
+            (click)="myDrop.isOpen() ? myDrop.close() : myDrop.open()"
+          >
+            {{ chosenItems }}
+          </button>
+          <div ngbDropdownMenu aria-labelledby="dropdownManual">
+            <button (click)="showItems('Reviews')" ngbDropdownItem>
+              Reviews
+            </button>
+            <button (click)="showItems('Orders')" ngbDropdownItem>
+              Orders
+            </button>
+          </div>
+        </div>
+      </div>
+      <ng-container *ngIf="showingReviews; else showingOrders">
+        <div class="admin__Reviews">
+          <table class="table table-striped">
+            <thead>
+              <tr>
+                <th scope="col">#</th>
+                <th scope="col">Person</th>
+                <th scope="col" style="text-align: center">Rating</th>
+                <th scope="col">User ID</th>
+                <th scope="col" style="text-align: center">Review</th>
+                <th scope="col" style="text-align: center">Action</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let review of reviews; index as i">
+                <th scope="row">{{ i + 1 }}</th>
+                <td>{{ review.reviewer }}</td>
+                <td style="text-align: center">
+                  {{ review.rating }}
+                </td>
+                <td>{{ review.userId }}</td>
+                <td>{{ review.reviewText }}</td>
+                <td class="d-flex justify-content-center">
+                  <button class="btn btn-dark">Add</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </ng-container>
+      <ng-template #showingOrders></ng-template>
+    </div>
+  </div>
+</div>
