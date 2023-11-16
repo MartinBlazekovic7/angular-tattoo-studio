@@ -35,10 +35,10 @@ export class GalleryComponent implements OnInit {
   ngOnInit(): void {
     this.api.getResources('galleries', this.queryArgs).subscribe((data) => {
       this.galleryItems = data.data as GalleryItem[];
-    });
-    this.api.getResources('artists', this.queryArgs).subscribe((data) => {
-      this.artists = data.data as Artist[];
-      this.filterByArtist(null);
+      this.api.getResources('artists', this.queryArgs).subscribe((data) => {
+        this.artists = data.data as Artist[];
+        this.filterByArtist(null);
+      });
     });
   }
 
