@@ -3,7 +3,7 @@ import { Artist } from '@model/artist.model';
 import { ApiService } from 'src/app/services/api.service';
 import * as qs from 'qs';
 import { Review, ReviewData } from '@model/review.model';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { AuthService } from '@service/auth.service';
 import { DataService } from '@service/data.service';
 import { User } from '@angular/fire/auth';
@@ -28,9 +28,9 @@ export class AboutComponent implements OnInit {
   });
 
   reviewForm = this.fb.group({
-    rating: [''],
-    reviewer: [''],
-    reviewText: [''],
+    rating: ['', Validators.required],
+    reviewer: ['', Validators.required],
+    reviewText: ['', Validators.required],
   });
 
   constructor(
@@ -69,6 +69,7 @@ export class AboutComponent implements OnInit {
     const { rating, reviewer, reviewText } = this.reviewForm.value;
 
     if (!this.reviewForm.valid || !rating || !reviewer || !reviewText) {
+      this.reviewForm.markAllAsTouched();
       return;
     }
 
@@ -94,5 +95,17 @@ export class AboutComponent implements OnInit {
       .subscribe(() => {
         this.reviewForm.reset();
       });
+  }
+
+  get rating() {
+    return this.reviewForm.get('rating');
+  }
+
+  get reviewer() {
+    return this.reviewForm.get('reviewer');
+  }
+
+  get reviewText() {
+    return this.reviewForm.get('reviewText');
   }
 }

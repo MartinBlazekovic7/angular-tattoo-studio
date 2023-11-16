@@ -1,6 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '@angular/fire/auth';
-import { NonNullableFormBuilder, Validators } from '@angular/forms';
+import {
+  AbstractControl,
+  NonNullableFormBuilder,
+  ValidationErrors,
+  ValidatorFn,
+  Validators,
+} from '@angular/forms';
 import { Router } from '@angular/router';
 import { Collections } from '@enum/collections.enum';
 import { UserDetails } from '@model/user-details.model';
@@ -10,6 +16,19 @@ import { AuthService } from '@service/auth.service';
 import { DataService } from '@service/data.service';
 import { switchMap } from 'rxjs';
 import { FirebaseErrorHelper } from 'src/app/helpers/firebase-error.helper';
+
+export function passwordsMatchValidator(): ValidatorFn {
+  return (control: AbstractControl): ValidationErrors | null => {
+    const password = control.get('password')?.value;
+    const confirmPassword = control.get('confirmPassword')?.value;
+
+    if (password && confirmPassword && password !== confirmPassword) {
+      return { passwordsDontMatch: true };
+    } else {
+      return null;
+    }
+  };
+}
 
 @Component({
   selector: 'app-home',
@@ -27,12 +46,15 @@ export class HomeComponent implements OnInit {
     password: ['', Validators.required],
   });
 
-  registerForm = this.fb.group({
-    email: ['', [Validators.required, Validators.email]],
-    displayName: ['', [Validators.required]],
-    password: ['', Validators.required],
-    confirmPassword: ['', Validators.required],
-  });
+  registerForm = this.fb.group(
+    {
+      email: ['', [Validators.required, Validators.email]],
+      displayName: ['', [Validators.required]],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+    },
+    { validators: passwordsMatchValidator() }
+  );
 
   constructor(
     private fb: NonNullableFormBuilder,
@@ -59,6 +81,7 @@ export class HomeComponent implements OnInit {
     const { email, password } = this.loginForm.value;
 
     if (!this.loginForm.valid || !email || !password) {
+      this.loginForm.markAllAsTouched();
       return;
     }
 
@@ -83,6 +106,7 @@ export class HomeComponent implements OnInit {
     const { displayName, email, password } = this.registerForm.value;
 
     if (!this.registerForm.valid || !displayName || !password || !email) {
+      this.registerForm.markAllAsTouched();
       return;
     }
 

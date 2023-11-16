@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { User } from '@angular/fire/auth';
-import { NonNullableFormBuilder } from '@angular/forms';
+import { NonNullableFormBuilder, Validators } from '@angular/forms';
 import { Collections } from '@enum/collections.enum';
 import { UserDetails } from '@model/user-details.model';
 import { AuthService } from '@service/auth.service';
@@ -16,10 +16,11 @@ export class ContactComponent implements OnInit {
   currentUserDetails?: UserDetails;
 
   contactForm = this.fb.group({
-    firstName: [''],
-    lastName: [''],
-    email: [''],
-    phoneNumber: [''],
+    firstName: ['', Validators.required],
+    lastName: ['', Validators.required],
+    email: ['', [Validators.required, Validators.email]],
+    phoneNumber: ['', Validators.required],
+    message: ['', Validators.required],
   });
 
   constructor(
@@ -42,7 +43,11 @@ export class ContactComponent implements OnInit {
   }
 
   submitForm() {
-    throw new Error('Method not implemented.');
+    if (!this.contactForm.valid) {
+      this.contactForm.markAllAsTouched();
+      return;
+    }
+    console.log(this.contactForm.value);
   }
   handleFileInput($event: Event) {
     throw new Error('Method not implemented.');
@@ -62,5 +67,9 @@ export class ContactComponent implements OnInit {
 
   get phoneNumber() {
     return this.contactForm.get('phoneNumber');
+  }
+
+  get message() {
+    return this.contactForm.get('message');
   }
 }

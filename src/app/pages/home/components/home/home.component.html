@@ -83,6 +83,21 @@
                     autocomplete="displayName"
                   />
                 </div>
+                <ul
+                  class="form__Errors"
+                  *ngIf="
+                    displayName &&
+                    displayName.invalid &&
+                    (displayName.dirty || displayName.touched)
+                  "
+                >
+                  <li
+                    class="form__Error"
+                    *ngIf="displayName?.errors?.['required']"
+                  >
+                    Name is required
+                  </li>
+                </ul>
                 <div class="form-group">
                   <input
                     type="email"
@@ -92,6 +107,22 @@
                     autocomplete="email"
                   />
                 </div>
+                <ul
+                  class="form__Errors"
+                  *ngIf="
+                    email && email.invalid && (email.dirty || email.touched)
+                  "
+                >
+                  <li class="form__Error" *ngIf="email?.errors?.['required']">
+                    E-mail address is required
+                  </li>
+                  <li
+                    class="form__Error"
+                    *ngIf="email?.errors?.['email'] || email?.errors?.['pattern']"
+                  >
+                    Please enter a valid e-mail address
+                  </li>
+                </ul>
                 <div class="form-group">
                   <input
                     type="password"
@@ -103,6 +134,21 @@
                     autocomplete="new-password"
                   />
                 </div>
+                <ul
+                  class="form__Errors"
+                  *ngIf="
+                    password &&
+                    password.invalid &&
+                    (password.dirty || password.touched)
+                  "
+                >
+                  <li
+                    class="form__Error"
+                    *ngIf="password?.errors?.['required']"
+                  >
+                    Password is required
+                  </li>
+                </ul>
                 <div class="form-group">
                   <input
                     type="password"
@@ -112,6 +158,27 @@
                     autocomplete="new-password"
                   />
                 </div>
+                <ul
+                  class="form__Errors"
+                  *ngIf="confirmPassword && !confirmPassword.invalid && registerForm.errors?.['passwordsDontMatch']"
+                >
+                  <li class="form__Error">Passwords don't match</li>
+                </ul>
+                <ul
+                  class="form__Errors"
+                  *ngIf="
+                    confirmPassword &&
+                    confirmPassword.invalid &&
+                    (confirmPassword.dirty || confirmPassword.touched)
+                  "
+                >
+                  <li
+                    class="form__Error"
+                    *ngIf="confirmPassword?.errors?.['required']"
+                  >
+                    Confirm password is required
+                  </li>
+                </ul>
                 <div class="buttonContainer">
                   <button type="submit" class="btn btn-dark">SUBMIT</button>
                   <p>
@@ -137,6 +204,27 @@
                     autocomplete="email"
                   />
                 </div>
+                <ul
+                  class="form__Errors"
+                  *ngIf="
+                    emailLogin &&
+                    emailLogin.invalid &&
+                    (emailLogin.dirty || emailLogin.touched)
+                  "
+                >
+                  <li
+                    class="form__Error"
+                    *ngIf="emailLogin?.errors?.['required']"
+                  >
+                    E-mail address is required
+                  </li>
+                  <li
+                    class="form__Error"
+                    *ngIf="emailLogin?.errors?.['email'] || emailLogin?.errors?.['pattern']"
+                  >
+                    Please enter a valid e-mail address
+                  </li>
+                </ul>
                 <div class="form-group">
                   <input
                     type="password"
@@ -146,6 +234,21 @@
                     autocomplete="current-password"
                   />
                 </div>
+                <ul
+                  class="form__Errors"
+                  *ngIf="
+                    passwordLogin &&
+                    passwordLogin.invalid &&
+                    (passwordLogin.dirty || passwordLogin.touched)
+                  "
+                >
+                  <li
+                    class="form__Error"
+                    *ngIf="passwordLogin?.errors?.['required']"
+                  >
+                    Password is required
+                  </li>
+                </ul>
                 <div class="buttonContainer">
                   <button type="submit" class="btn btn-dark">SUBMIT</button>
                   <p>

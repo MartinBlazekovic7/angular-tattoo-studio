@@ -81,15 +81,39 @@
                 formControlName="reviewer"
                 autocomplete="on"
               />
-              <input
-                type="number"
-                class="form-control"
-                id="rating"
-                placeholder="Rating"
-                name="rating"
-                formControlName="rating"
-                autocomplete="on"
-              />
+              <ul
+                class="form__Errors"
+                *ngIf="
+                  reviewer &&
+                  reviewer.invalid &&
+                  (reviewer.dirty || reviewer.touched)
+                "
+              >
+                <li class="form__Error" *ngIf="reviewer?.errors?.['required']">
+                  Name is required
+                </li>
+              </ul>
+              <div class="form-group">
+                <input
+                  type="number"
+                  class="form-control"
+                  id="rating"
+                  placeholder="Rating"
+                  name="rating"
+                  formControlName="rating"
+                  autocomplete="on"
+                />
+              </div>
+              <ul
+                class="form__Errors"
+                *ngIf="
+                  rating && rating.invalid && (rating.dirty || rating.touched)
+                "
+              >
+                <li class="form__Error" *ngIf="reviewer?.errors?.['required']">
+                  Rating is required
+                </li>
+              </ul>
             </div>
             <div class="form-group">
               <textarea
@@ -102,6 +126,18 @@
                 autocomplete="on"
               ></textarea>
             </div>
+            <ul
+              class="form__Errors"
+              *ngIf="
+                reviewText &&
+                reviewText.invalid &&
+                (reviewText.dirty || reviewText.touched)
+              "
+            >
+              <li class="form__Error" *ngIf="reviewText?.errors?.['required']">
+                Review is required
+              </li>
+            </ul>
             <div class="buttonContainer">
               <button type="submit" class="btn btn-dark">SUBMIT</button>
             </div>

@@ -24,7 +24,21 @@
                 formControlName="firstName"
                 autocomplete="on"
               />
+              <ul
+                style="margin-top: 12px"
+                class="form__Errors"
+                *ngIf="
+                  firstName &&
+                  firstName.invalid &&
+                  (firstName.dirty || firstName.touched)
+                "
+              >
+                <li class="form__Error" *ngIf="firstName?.errors?.['required']">
+                  First Name is required
+                </li>
+              </ul>
             </div>
+
             <div class="form-group col-md-6">
               <label for="lastName">Last Name</label>
               <input
@@ -35,6 +49,19 @@
                 formControlName="lastName"
                 autocomplete="on"
               />
+              <ul
+                style="margin-top: 12px"
+                class="form__Errors"
+                *ngIf="
+                  lastName &&
+                  lastName.invalid &&
+                  (lastName.dirty || lastName.touched)
+                "
+              >
+                <li class="form__Error" *ngIf="lastName?.errors?.['required']">
+                  Last Name is required
+                </li>
+              </ul>
             </div>
           </div>
           <div class="form-row row">
@@ -48,6 +75,21 @@
                 formControlName="email"
                 autocomplete="on"
               />
+              <ul
+                style="margin-top: 12px"
+                class="form__Errors"
+                *ngIf="email && email.invalid && (email.dirty || email.touched)"
+              >
+                <li class="form__Error" *ngIf="email?.errors?.['required']">
+                  E-mail address is required
+                </li>
+                <li
+                  class="form__Error"
+                  *ngIf="email?.errors?.['email'] || email?.errors?.['pattern']"
+                >
+                  Please enter a valid e-mail address
+                </li>
+              </ul>
             </div>
             <div class="form-group col-md-6">
               <label for="phoneNumber">Phone Number</label>
@@ -59,6 +101,22 @@
                 formControlName="phoneNumber"
                 autocomplete="on"
               />
+              <ul
+                style="margin-top: 12px"
+                class="form__Errors"
+                *ngIf="
+                  phoneNumber &&
+                  phoneNumber.invalid &&
+                  (phoneNumber.dirty || phoneNumber.touched)
+                "
+              >
+                <li
+                  class="form__Error"
+                  *ngIf="phoneNumber?.errors?.['required']"
+                >
+                  Phone Number is required
+                </li>
+              </ul>
             </div>
           </div>
           <div class="form-group">
@@ -86,7 +144,20 @@
               id="message"
               rows="4"
               placeholder="Enter your message"
+              formControlName="message"
+              autocomplete="on"
             ></textarea>
+            <ul
+              style="margin-top: 12px"
+              class="form__Errors"
+              *ngIf="
+                message && message.invalid && (message.dirty || message.touched)
+              "
+            >
+              <li class="form__Error" *ngIf="message?.errors?.['required']">
+                Message is required
+              </li>
+            </ul>
           </div>
           <div class="w-100">
             <button type="submit" class="btn btn-dark">SUBMIT</button>
