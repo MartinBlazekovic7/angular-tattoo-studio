@@ -2,55 +2,69 @@
   <div class="designs__Container contentWrapper">
     <div class="designs__ItemsContainer">
       <div class="designs__Header">
-        <div class="designs__HeaderSortDropdowns">
+        <h3 class="subtitle">DESIGNS</h3>
+        <div class="designs__HeaderFilterDropdowns" style="margin-right: 16px">
           <p class="filterLabel">Sort by:</p>
-          <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+          <div class="d-inline-block" ngbDropdown #sortDrop="ngbDropdown">
             <button
               type="button"
               class="btn btn-outline-dark me-2"
               id="dropdownManual"
               ngbDropdownAnchor
-              (click)="myDrop.isOpen() ? myDrop.close() : myDrop.open()"
+              (click)="sortDrop.isOpen() ? sortDrop.close() : sortDrop.open()"
             >
-              Sort
+              {{ sortLabel }}
             </button>
             <div ngbDropdownMenu aria-labelledby="dropdownManual">
-              <button ngbDropdownItem>Sort 1</button>
-              <button ngbDropdownItem>Sort 2</button>
+              <button ngbDropdownItem (click)="sortDesigns('price-asc')">
+                Price (ASC)
+              </button>
+              <button ngbDropdownItem (click)="sortDesigns('price-desc')">
+                Price (DESC)
+              </button>
+              <button ngbDropdownItem (click)="sortDesigns('alphabetical-asc')">
+                Alphabetical (ASC)
+              </button>
+              <button
+                ngbDropdownItem
+                (click)="sortDesigns('alphabetical-desc')"
+              >
+                Alphabetical (DESC)
+              </button>
+              <button ngbDropdownItem (click)="sortDesigns('popularity-asc')">
+                Popularity (ASC)
+              </button>
+              <button ngbDropdownItem (click)="sortDesigns('popularity-desc')">
+                Popularity (DESC)
+              </button>
             </div>
           </div>
-        </div>
-
-        <div class="designs__HeaderFilterDropdowns">
           <p class="filterLabel">Filter by:</p>
-          <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
+          <div class="d-inline-block" ngbDropdown #typeDrop="ngbDropdown">
             <button
               type="button"
               class="btn btn-outline-dark me-2"
               id="dropdownManual"
               ngbDropdownAnchor
-              (click)="myDrop.isOpen() ? myDrop.close() : myDrop.open()"
+              (click)="typeDrop.isOpen() ? typeDrop.close() : typeDrop.open()"
             >
-              Sort
+              {{ typeFilterLabel }}
             </button>
             <div ngbDropdownMenu aria-labelledby="dropdownManual">
-              <button ngbDropdownItem>Sort 1</button>
-              <button ngbDropdownItem>Sort 2</button>
-            </div>
-          </div>
-          <div class="d-inline-block" ngbDropdown #myDrop="ngbDropdown">
-            <button
-              type="button"
-              class="btn btn-outline-dark me-2"
-              id="dropdownManual"
-              ngbDropdownAnchor
-              (click)="myDrop.isOpen() ? myDrop.close() : myDrop.open()"
-            >
-              Sort
-            </button>
-            <div ngbDropdownMenu aria-labelledby="dropdownManual">
-              <button ngbDropdownItem>Sort 1</button>
-              <button ngbDropdownItem>Sort 2</button>
+              <button
+                ngbDropdownItem
+                *ngFor="let type of types"
+                (click)="filterByType(type)"
+              >
+                {{ type.attributes?.name }}
+              </button>
+              <button
+                *ngIf="selectedType"
+                ngbDropdownItem
+                (click)="filterByType(null)"
+              >
+                All
+              </button>
             </div>
           </div>
         </div>
@@ -58,7 +72,7 @@
     </div>
     <div class="designs__DesignsContainer">
       <div class="designs__ItemsList" *ngIf="designs">
-        <div class="designs__ItemBox" *ngFor="let design of designs">
+        <div class="designs__ItemBox" *ngFor="let design of designsFiltered">
           <img
             src="http://localhost:1337{{
               design.attributes?.image?.data?.attributes?.url
@@ -68,6 +82,10 @@
           <div class="designs__ItemBoxInfo">
             <p>{{ design.attributes?.name }}</p>
             <i>More</i>
+          </div>
+          <div class="designs__ItemBoxInfo">
+            <p>Starting at:</p>
+            <i>{{ design.attributes?.price }}$</i>
           </div>
         </div>
       </div>
